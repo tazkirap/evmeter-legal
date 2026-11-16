@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kebijakan Privasi EVMeter</title>
+<meta name="description" content="Data apa yang disimpan EVMeter, ke mana dikirim, dan cara menghapusnya.">
+<style>
+  :root {
+    --ink: #1a1d21;
+    --muted: #4b5563;
+    --line: #e3e6ea;
+    --canvas: #fbfbf9;
+    --accent: #1f5fbf;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ink: #e6e8eb;
+      --muted: #b4bac2;
+      --line: #2c3036;
+      --canvas: #14161a;
+      --accent: #7fb0ff;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 42rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+  h1 { font-size: 1.9rem; line-height: 1.2; margin: 0 0 .5rem; }
+  h2 { font-size: 1.15rem; margin: 2.25rem 0 .5rem; padding-top: 1.25rem; border-top: 1px solid var(--line); }
+  p, li { color: var(--ink); }
+  .meta { color: var(--muted); margin: 0 0 1.5rem; }
+  ul { padding-left: 1.25rem; }
+  li { margin: .3rem 0; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
+  .note { border: 1px solid var(--line); border-radius: 8px; padding: .9rem 1rem; }
+  table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+  th, td { text-align: left; vertical-align: top; padding: .5rem .5rem .5rem 0; border-bottom: 1px solid var(--line); }
+  th { color: var(--muted); font-weight: 600; }
+  .table-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Kebijakan Privasi EVMeter</h1>
+  <p class="meta">Berlaku sejak 16 November 2026</p>
+
+  <p>EVMeter adalah aplikasi iPhone dan iPad untuk mencatat pengisian daya mobil listrik: berapa kWh yang masuk, berapa biayanya, dan berapa rupiah per kilometer. Halaman ini menjelaskan data apa yang disimpan aplikasi, ke mana data itu dikirim, dan cara menghapusnya.</p>
+
+  <h2>Data yang Anda masukkan</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Data</th><th>Isinya</th></tr></thead>
+    <tbody>
+      <tr><td>Akun</td><td>Alamat email. Kalau masuk dengan Apple atau Google, juga ID akun dari layanan itu, serta nama yang mereka berikan bila ada. Apple bisa memberi alamat email samaran.</td></tr>
+      <tr><td>Profil</td><td>Nama panggilan dan foto profil, bila Anda isi.</td></tr>
+      <tr><td>Kendaraan</td><td>Nama, merek, model, varian, kapasitas baterai, dan foto kendaraan bila Anda tambahkan.</td></tr>
+      <tr><td>Stasiun</td><td>Nama stasiun, jenis (umum, rumah, portable), operator, tarif per kWh, nama panggilan, dan tanda favorit.</td></tr>
+      <tr><td>Riwayat pengisian</td><td>Waktu mulai dan selesai, odometer, persentase baterai, kWh, biaya, nomor transaksi, durasi, jenis konektor, dan daya.</td></tr>
+      <tr><td>Foto struk</td><td>Foto atau tangkapan layar struk yang Anda pilih saat mencatat pengisian.</td></tr>
+      <tr><td>Pengaturan</td><td>Skema tarif listrik rumah yang Anda pilih. Pilihan tema terang atau gelap hanya disimpan di HP.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p>EVMeter tidak meminta akses lokasi, kontak, atau mikrofon. Foto hanya diambil dari yang Anda pilih sendiri.</p>
+
+  <h2>Ke mana data dikirim</h2>
+  <ul>
+    <li><strong>Supabase</strong> menyimpan akun, data di atas, dan foto, supaya riwayat Anda tidak hilang saat ganti HP. Setiap akun hanya bisa membaca datanya sendiri. Server Supabase bisa berada di luar Indonesia.</li>
+    <li><strong>Google Gemini API</strong> menerima foto struk yang Anda pilih untuk dibaca isinya (kWh, biaya, waktu, stasiun). Teks struk juga dibaca langsung di HP dengan fitur pengenalan teks bawaan Apple untuk memeriksa hasilnya.</li>
+    <li><strong>Apple dan Google</strong> memproses proses masuk bila Anda memilih Masuk dengan Apple atau Lanjut dengan Google.</li>
+  </ul>
+
+  <div class="note">
+    <p><strong>Penting soal foto struk.</strong> EVMeter memakai Gemini API versi tanpa biaya. Menurut ketentuan Google untuk versi ini, Google dapat memakai data yang dikirim untuk mengembangkan produknya, dan petugas Google dapat membacanya. Jangan memilih foto yang memuat informasi yang tidak ingin Anda bagikan. Mencatat pengisian secara manual tidak mengirim apa pun ke Google.</p>
+  </div>
+
+  <p>Ketentuan masing-masing layanan: <a href="https://supabase.com/privacy">Supabase</a>, <a href="https://ai.google.dev/gemini-api/terms">Gemini API</a>, <a href="https://www.apple.com/legal/privacy/">Apple</a>, <a href="https://policies.google.com/privacy">Google</a>.</p>
+
+  <h2>Yang tidak dilakukan EVMeter</h2>
+  <ul>
+    <li>Tidak menampilkan iklan.</li>
+    <li>Tidak memasang alat analitik atau pelacak.</li>
+    <li>Tidak menjual atau menyewakan data Anda.</li>
+    <li>Tidak menggabungkan data Anda dengan data dari aplikasi atau situs lain.</li>
+  </ul>
+
+  <h2>Berapa lama data disimpan</h2>
+  <p>Data disimpan selama akun Anda ada. Catatan yang Anda hapus di aplikasi juga terhapus dari server saat HP tersambung ke internet. Saat Anda keluar dari akun, data di HP dihapus, sedangkan salinan di akun tetap ada dan kembali saat Anda masuk lagi.</p>
+
+  <h2>Menghapus akun</h2>
+  <p>Buka <strong>Pengaturan › Hapus akun</strong> di aplikasi, ketik HAPUS, lalu konfirmasi. Akun, semua catatan, dan semua foto dihapus permanen dari server dan dari HP. Penyedia server dapat menyimpan salinan cadangan untuk sementara sesuai kebijakan mereka sebelum ikut terhapus.</p>
+  <p>Kalau Anda masuk dengan Apple, Anda juga bisa memutus EVMeter di Pengaturan iPhone › nama Anda › Masuk dengan Apple.</p>
+  <p>Tidak bisa membuka aplikasi? Kirim email dari alamat yang terdaftar ke <a href="mailto:tazkira.pd@gmail.com?subject=Hapus%20akun%20EVMeter">tazkira.pd@gmail.com</a> dengan judul "Hapus akun EVMeter".</p>
+
+  <h2>Mengubah data</h2>
+  <p>Semua catatan, kendaraan, stasiun, dan profil bisa diubah atau dihapus langsung di aplikasi. Untuk meminta salinan data Anda, kirim email ke alamat di bawah.</p>
+
+  <h2>Usia pengguna</h2>
+  <p>EVMeter ditujukan untuk pengguna berusia 18 tahun ke atas, sesuai syarat layanan Gemini API yang dipakai untuk membaca struk.</p>
+
+  <h2>Perubahan kebijakan</h2>
+  <p>Kalau isi halaman ini berubah, tanggal di bagian atas ikut berubah.</p>
+
+  <h2>Kontak</h2>
+  <p>Pertanyaan soal privasi: <a href="mailto:tazkira.pd@gmail.com">tazkira.pd@gmail.com</a></p>
+</main>
+</body>
+</html>
